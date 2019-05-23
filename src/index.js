@@ -27,17 +27,33 @@ async function main() {
 
     let items = data.rss.channel[0].item;
 
-    let output = '';
+    // Filter out by category
+    let outputArr = [];
 
     items.forEach(item => {
         if (item.category.indexOf('parts') >= 0) {
-            let result = template(item);
-            output += result;
+            outputArr.push(item);
         }
+    });
+
+    // Sort by end date
+    outputArr.sort((a, b) => {
+        if (a.endDate < b.endDate) return -1;
+        if (a.endDate > b.endDate) return 1;
+        return null;
+    });
+
+    // Stringify HTML
+    let output = '';
+
+    outputArr.forEach(item => {
+        let result = template(item);
+        output += result;
     });
 
     output += style;
 
+    // Upload
     console.log('Uploading to DCP...');
     await uploadHtml(output);
 
