@@ -1,8 +1,10 @@
-const { xmlToJson } = require('./utils');
-const fetch = require('isomorphic-fetch');
+require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
+const fetch = require('isomorphic-fetch');
 const handlebars = require('handlebars');
+const { xmlToJson } = require('./utils');
+const uploadHtml = require('./upload-html');
 
 const source = fs.readFileSync(path.join(__dirname, './templates/html.hbs'), 'utf8');
 const template = handlebars.compile(source);
@@ -11,7 +13,8 @@ const style = fs.readFileSync(path.join(__dirname, './templates/style.html'), 'u
 async function main() {
     let data;
     try {
-        const offersXmlData = await fetch('https://5ce5787b3259e78e74b25a12--hutson.netlify.com/offers-rss.xml', {
+        console.log('Fetching offers RSS feed...')
+        const offersXmlData = await fetch('https://www.hutsoninc.com/offers-rss.xml', {
             method: 'GET'
         }).then(res => res.text());
         data = await xmlToJson(offersXmlData);
@@ -35,7 +38,11 @@ async function main() {
 
     output += style;
 
-    // fs.writeFileSync(path.join(__dirname, './out.html'), output);
+    console.log('Uploading to DCP...');
+    await uploadHtml(output);
+
+    console.log('Done.');
+    process.exit(0);
 }
 
 main();
