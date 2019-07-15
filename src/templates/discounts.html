@@ -1,0 +1,87 @@
+<div class="discount-grid">
+    <div class="discount-column">
+        <h3>
+            5% Off<br />
+            Orders under $250
+        </h3>
+        <p>
+            Discount applies to in-stock parts. Discount applied at point of
+            purchase. Offer ends August 31st, 2019.
+        </p>
+    </div>
+    <div class="discount-column">
+        <h3>
+            10% Off<br />
+            Orders $250 - $750
+        </h3>
+        <p>
+            Discount applies to in-stock parts. Discount applied at point of
+            invoice. Offer ends August 31st, 2019.
+        </p>
+    </div>
+    <div class="discount-column">
+        <h3>
+            15% Off<br />
+            Orders over $750
+        </h3>
+        <p>
+            Discount applies to in-stock parts. Discount applied at point of
+            invoice. Offer ends August 31st, 2019.
+        </p>
+    </div>
+    <p class="discount-grid-disclaimer">These discounts only apply to single orders and cannot be stacked</p>
+</div>
+<style type="text/css">
+    .discount-grid {
+        background-color: #377539;
+        color: #fff;
+        padding: 20px 0;
+    }
+
+    .discount-column {
+        box-sizing: border-box;
+        display: inline-block;
+        padding: 20px;
+        text-align: center;
+        width: 33%;
+    }
+
+    .discount-column:not(:last-child) {
+        border-right: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .discount-column h3 {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+    }
+
+    .discount-column p {
+        font-style: italic;
+        font-size: 14px;
+        margin: 10px 0 0;
+        padding: 0;
+    }
+
+    .discount-grid-disclaimer {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 12px;
+      font-style: italic;
+      margin: 0;
+      padding: 15px 20px 0;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+        .discount-column {
+            display: block;
+            width: 100%;
+        }
+
+        .discount-column:not(:last-child) {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            border-right: none;
+        }
+    }
+</style>
