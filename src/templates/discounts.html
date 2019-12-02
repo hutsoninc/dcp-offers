@@ -1,26 +1,53 @@
 <div class="discount-grid">
     <div class="discount-column">
-        <h3>5% Discount on <i>all</i> orders</h3>
+        <h3>
+            5% Off<br />
+            Orders up to $1,999
+        </h3>
         <p>
             Discount applies to in-stock parts. Discount applied at point of
-            invoice.
+            invoice. Offer ends January 31st, 2020.
         </p>
     </div>
-    <p class="discount-grid-disclaimer">
-        These discounts only apply to single orders and cannot be stacked
-    </p>
+    <div class="discount-column">
+        <h3>
+            10% Off<br />
+            Orders $2,000 - $4,999
+        </h3>
+        <p>
+            Discount applies to in-stock parts. Discount applied at point of
+            invoice. Offer ends January 31st, 2020.
+        </p>
+    </div>
+    <div class="discount-column">
+        <h3>
+            15% Off<br />
+            Orders over $5,000
+        </h3>
+        <p>
+            Discount applies to in-stock parts. Discount applied at point of
+            invoice. Offer ends January 31st, 2020.
+        </p>
+    </div>
+    <p class="discount-grid-disclaimer">These discounts only apply to single orders and cannot be stacked</p>
 </div>
 <style type="text/css">
     .discount-grid {
         background-color: #377539;
         color: #fff;
-        padding: 30px 0;
+        padding: 20px 0;
     }
 
     .discount-column {
         box-sizing: border-box;
-        padding: 0 20px;
+        display: inline-block;
+        padding: 20px;
         text-align: center;
+        width: 33%;
+    }
+
+    .discount-column:not(:last-of-type) {
+        border-right: 1px solid rgba(255, 255, 255, 0.5);
     }
 
     .discount-column h3 {
@@ -38,12 +65,12 @@
     }
 
     .discount-grid-disclaimer {
-        color: rgba(255, 255, 255, 0.75);
-        font-size: 12px;
-        font-style: italic;
-        margin: 0;
-        padding: 10px 20px 0;
-        text-align: center;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 12px;
+      font-style: italic;
+      margin: 0;
+      padding: 15px 20px 0;
+      text-align: center;
     }
 
     @media (max-width: 800px) {
