@@ -3,15 +3,12 @@ const fs = require('fs');
 const path = require('path');
 const fetch = require('isomorphic-fetch');
 const handlebars = require('handlebars');
-const { xmlToJson } = require('./utils');
+const inlineCss = require('inline-css');
+const { delay, xmlToJson } = require('./utils');
 const uploadHtml = require('./upload-html');
 
 const freeShippingHtml = fs.readFileSync(
     path.join(__dirname, './templates/free-shipping.html'),
-    'utf8'
-);
-const discountsHtml = fs.readFileSync(
-    path.join(__dirname, './templates/discounts.html'),
     'utf8'
 );
 
@@ -62,26 +59,30 @@ async function main() {
     });
 
     // Stringify HTML
-    let output = '';
-
-    // Add discounts section
-    output += discountsHtml;
+    let html = '';
 
     // Add free shipping section
-    output += freeShippingHtml;
+    html += freeShippingHtml;
 
     // Add offers
     outputArr.forEach(item => {
         let result = promoTemplate(item);
-        output += result;
+        html += result;
     });
 
     // Add global styles
-    output += style;
+    html += style;
+
+    const inlinedHtml = await inlineCss(html, {
+        preserveMediaQueries: true,
+        url: '/',
+    });
 
     // Upload
     console.log('Uploading to DCP...');
-    await uploadHtml(output);
+    await uploadHtml(inlinedHtml);
+
+    await delay(60000);
 
     console.log('Done.');
     process.exit(0);
