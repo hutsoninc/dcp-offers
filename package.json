@@ -16,7 +16,7 @@
   "dependencies": {
     "clipboardy": "^2.3.0",
     "dotenv": "^8.0.0",
-    "handlebars": "^4.1.2",
+    "handlebars": "^4.6.0",
     "inline-css": "^2.6.3",
     "isomorphic-fetch": "^2.2.1",
     "puppeteer": "^1.16.0",
