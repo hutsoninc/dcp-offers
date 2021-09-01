@@ -24,8 +24,8 @@ module.exports = async function uploadHtml(html) {
         await page.click('button[type=submit]');
 
         // Navigate to specials
-        await page.waitForSelector('a[title="Specials Manager"]');
-        await page.click('a[title="Specials Manager"]');
+        await page.waitForSelector('a[title="Homepage Manager"]');
+        await page.click('a[title="Homepage Manager"]');
 
         await page.waitFor(2000);
 
